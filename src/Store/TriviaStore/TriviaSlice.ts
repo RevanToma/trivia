@@ -1,5 +1,6 @@
+import { SessionApi } from "../../Api/Api";
 import { TriviaState } from "../../types";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 export const fetchTriviaQuestions = createAsyncThunk(
   "trivia/fetchTriviaQuestions",
@@ -7,6 +8,15 @@ export const fetchTriviaQuestions = createAsyncThunk(
     const response = await fetch(apiUrl);
     const data = await response.json();
     return data.results;
+  }
+);
+
+export const fetchSessionToken = createAsyncThunk(
+  "session/fetchToken",
+  async (sessionTokenUrl: string) => {
+    const response = await fetch(sessionTokenUrl);
+    const data = await response.json();
+    return data.token;
   }
 );
 
@@ -31,7 +41,7 @@ const triviaSlice = createSlice({
     nextQuestion: (state) => {
       state.currentQuestionIndex++;
     },
-    setSessionToken: (state, { payload }) => {
+    setSessionToken: (state, { payload }: PayloadAction<string>) => {
       state.sessionToken = payload;
     },
     resetTrivia: (state) => {
@@ -51,6 +61,9 @@ const triviaSlice = createSlice({
     builder.addCase(fetchTriviaQuestions.fulfilled, (state, { payload }) => {
       state.questions = payload;
       state.gameStatus = "ongoing";
+    });
+    builder.addCase(fetchSessionToken.fulfilled, (state, { payload }) => {
+      state.sessionToken = payload;
     });
   },
 });

@@ -1,24 +1,37 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import * as S from "./StartGameStyles";
-import Button from "../common/Button/Button";
-import { fetchTriviaCategories } from "../../Api/Api";
-import { DifficultyDisplayNames, TriviaCategory } from "../../types";
+import {
+  InitialTriviaApiUrl,
+  SessionApi,
+  fetchTriviaCategories,
+} from "../../Api/Api";
+import {
+  fetchSessionToken,
+  fetchTriviaQuestions,
+} from "../../Store/TriviaStore/TriviaSlice";
 import { useAppDispatch } from "../../hooks/useDispatch";
-import { fetchTriviaQuestions } from "../../Store/TriviaStore/TriviaSlice";
+import { DifficultyDisplayNames, TriviaCategory } from "../../types";
+import Button from "../../components/common/Button/Button";
+import * as S from "./StartGameStyles";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectSessionToken } from "../../Store/TriviaStore/TriviaSelectors";
 
 const StartGame = () => {
   const {
     register,
     handleSubmit,
-    watch,
+
     getValues,
     formState: { errors },
   } = useForm();
 
   const dispatch = useAppDispatch();
   const [categories, setCategories] = useState<TriviaCategory[]>([]);
+  const [loading, setLoading] = useState(false);
+  const sessionToken = useSelector(selectSessionToken);
 
+  const navigate = useNavigate();
   useEffect(() => {
     const getCategories = async () => {
       const triviaCategories = await fetchTriviaCategories();
@@ -27,14 +40,18 @@ const StartGame = () => {
     getCategories();
   }, []);
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
+    setLoading(true);
+    await dispatch(fetchSessionToken(SessionApi));
+
     const values = getValues();
     const difficulty = values.difficulty;
     const category = values.category;
-    const TriviaApiUrl = `https://opentdb.com/api.php?amount=7&category=${category}&difficulty=${difficulty}&type=multiple`;
-    dispatch(fetchTriviaQuestions(TriviaApiUrl));
+    const TriviaApiUrl = `${InitialTriviaApiUrl}&category=${category}&difficulty=${difficulty}&type=multiple&token=${sessionToken}`;
+    await dispatch(fetchTriviaQuestions(TriviaApiUrl));
+    setLoading(false);
+    navigate("/game");
   };
-
   return (
     <S.StartGameContainer>
       <header>
@@ -74,7 +91,9 @@ const StartGame = () => {
             )}
           </select>
         </S.SetupGameFields>
-        <Button type="submit">Start Game</Button>
+        <Button type="submit" isLoading={loading}>
+          Start Game
+        </Button>
       </S.SetupGameForm>
     </S.StartGameContainer>
   );

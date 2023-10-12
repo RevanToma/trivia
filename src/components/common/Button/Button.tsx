@@ -10,6 +10,7 @@ const Button: FC<Partial<ButtonProps>> = ({
   onClick,
   disabled = false,
   type,
+  isSelected = false,
 }) => {
   return (
     <StyledButton
@@ -17,6 +18,7 @@ const Button: FC<Partial<ButtonProps>> = ({
       onClick={onClick}
       disabled={disabled}
       type={type}
+      $isSelected={isSelected}
     >
       {isLoading ? <Spinner /> : children}
     </StyledButton>

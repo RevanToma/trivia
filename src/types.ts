@@ -8,6 +8,7 @@ export interface ButtonProps {
   buttontypes: ButtonType;
   children: ReactNode;
   isLoading: boolean;
+  isSelected: boolean;
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   disabled: boolean;
   type: "button" | "submit";
@@ -47,4 +48,16 @@ export const DifficultyDisplayNames: { [key in Difficulty]: string } = {
   [Difficulty.Easy]: "Easy",
   [Difficulty.Medium]: "Medium",
   [Difficulty.Hard]: "Hard",
+};
+
+export type QuestionProps = {
+  data: {
+    category: string;
+    type: string;
+    difficulty: string;
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
+  };
+  onAnswerSelected: (selectedAnswer: string) => void;
 };

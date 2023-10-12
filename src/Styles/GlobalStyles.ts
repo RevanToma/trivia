@@ -61,23 +61,23 @@ font-family: Roboto;
  }
 
  h1 {
-  font-family: Roboto;
-  letter-spacing: 1px;
-  font-weight: bold;
-  font-size: 3rem;
-}
+    font-family: Roboto;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 3rem;
+  }
 
-h4 {
-  font-family: Roboto;
-  letter-spacing: 1px;
-  font-weight: 500;
-  font-size: 2rem;
-}
+  h4 {
+    font-family: Roboto;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 2rem;
+  }
 
-li {
-  font-size: 1.6rem;
-  letter-spacing: 1px;
-}
+  li {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
  
 }
 

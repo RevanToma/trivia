@@ -1,9 +1,9 @@
-import StartGame from "./components/Game/StartGame";
+import InitilizeGame from "./page/Home/InitilizeGame";
 
 function App() {
   return (
     <>
-      <StartGame />
+      <InitilizeGame />
     </>
   );
 }

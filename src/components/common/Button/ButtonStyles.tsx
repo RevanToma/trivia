@@ -1,9 +1,26 @@
 import styled from "styled-components";
 import { ButtonType } from "../../../types";
-
-export const StyledButton = styled.button<{ $buttonType?: ButtonType }>`
+interface StyledButtonProps {
+  $buttonType?: ButtonType;
+  $isSelected?: boolean;
+}
+export const StyledButton = styled.button<StyledButtonProps>`
   padding: 1.5rem;
   min-width: 20rem;
+
+  ${({ $isSelected }) =>
+    $isSelected &&
+    `
+  border: 1px solid #f1d202;
+  position: relative; 
+  &:after {
+    content: '✓';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`}
 
   ${({ $buttonType }) => {
     switch ($buttonType) {
