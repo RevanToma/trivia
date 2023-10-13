@@ -42,7 +42,7 @@ export const SetupGameFields = styled.div`
 
   label {
     color: #dcedc8;
-    font-family: Poppins;
+    font-family: Roboto;
     letter-spacing: 0.1rem;
     line-height: 1rem;
     font-size: 1.5rem;

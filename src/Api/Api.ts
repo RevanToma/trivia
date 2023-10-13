@@ -8,5 +8,6 @@ export const SessionApi = "https://opentdb.com/api_token.php?command=request";
 export const fetchTriviaCategories = async (): Promise<TriviaCategory[]> => {
   const response = await fetch(TriviaCategoriesApi);
   const data = await response.json();
+
   return data.trivia_categories;
 };

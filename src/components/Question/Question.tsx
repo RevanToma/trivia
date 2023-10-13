@@ -63,6 +63,7 @@ const Question: FC<QuestionProps> = ({ data, onAnswerSelected }) => {
       )
     );
   }, [data]);
+  console.log("SELECTED CATA", selectedCategory);
 
   return (
     <S.QuestionContainer>

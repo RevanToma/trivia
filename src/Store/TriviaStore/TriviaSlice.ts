@@ -51,6 +51,7 @@ const triviaSlice = createSlice({
       state.gameStatus = "idle";
       state.startTime = null;
       state.sessionToken = "";
+      state.questions = [];
     },
     startGame: (state) => {
       state.gameStatus = "ongoing";

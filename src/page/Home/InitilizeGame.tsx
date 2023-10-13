@@ -46,11 +46,10 @@ const StartGame = () => {
     getCategories();
   }, []);
 
-  const values = getValues();
-  const difficulty = values.difficulty;
-  const category = values.category;
-
   const onSubmit = async () => {
+    const values = getValues();
+    const difficulty = values.difficulty;
+    const category = values.category;
     setLoading(true);
     await dispatch(fetchSessionToken(SessionApi));
 
@@ -77,11 +76,7 @@ const StartGame = () => {
         <S.SetupGameFields>
           <label htmlFor="category">Select Category</label>
           {errors.category && <span>This field is required</span>}
-          <select
-            {...register("category", { required: true })}
-            id="category"
-            defaultValue="Categories"
-          >
+          <select {...register("category", { required: true })} id="category">
             <option value="" disabled selected>
               Category
             </option>
