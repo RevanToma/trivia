@@ -77,6 +77,10 @@ const StartGame = () => {
           <label htmlFor="category">Select Category</label>
           {errors.category && <span>This field is required</span>}
           <select {...register("category", { required: true })} id="category">
+            <option value="" disabled selected>
+              Category
+            </option>
+
             {categories.map((category) => {
               return (
                 <option key={category.id} value={category.id}>
