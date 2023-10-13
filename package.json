@@ -1,7 +1,7 @@
 {
   "name": "trivia",
   "version": "0.1.0",
-  "homepage": "https://RevanToma.github.io/",
+  "homepage": "https://RevanToma.github.io/trivia",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
@@ -36,7 +36,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rulse": {
+      "react-hooks/exhaustive-deps": "off"
+    }
   },
   "browserslist": {
     "production": [
