@@ -62,10 +62,6 @@ const Question: FC<QuestionProps> = ({ data, onAnswerSelected }) => {
     );
   }, [data]);
 
-  const handleTimeOut = () => {
-    console.log("time out");
-  };
-
   return (
     <S.QuestionContainer>
       <header>
@@ -75,7 +71,7 @@ const Question: FC<QuestionProps> = ({ data, onAnswerSelected }) => {
         </h2>
       </header>
       <S.QuestionContent>
-        <Timer initialSeconds={31} onTimeOut={handleTimeOut} />
+        <Timer initialSeconds={5} />
         <h4>{data.question}</h4>
 
         <>

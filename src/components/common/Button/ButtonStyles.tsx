@@ -15,7 +15,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
   position: relative; 
   &:after {
     content: '✓';
+    font-size: 2.5rem;
     position: absolute;
+    color: #f1d202;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);

@@ -63,3 +63,22 @@ export const ResultsTable = styled.table`
     display: none;
   }
 `;
+export const ScoreDisplay = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
+
+export const PercentageScore = styled.span`
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: ${(props) => props.color || "black"};
+`;
+
+export const ScoreText = styled.span`
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+`;

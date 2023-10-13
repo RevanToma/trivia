@@ -32,10 +32,16 @@ const StartGame = () => {
   const sessionToken = useSelector(selectSessionToken);
 
   const navigate = useNavigate();
+
   useEffect(() => {
     const getCategories = async () => {
-      const triviaCategories = await fetchTriviaCategories();
-      setCategories(triviaCategories);
+      try {
+        const triviaCategories = await fetchTriviaCategories();
+        setCategories(triviaCategories);
+      } catch (error) {
+        console.log(error);
+        alert("Something went wrong, please wait abit and try again.");
+      }
     };
     getCategories();
   }, []);

@@ -25,10 +25,30 @@ const Results = () => {
     navigate("/");
     dispatch(resetTrivia());
   };
-  console.log(correctAnswers, percentageScore);
+  const getColorForScore = (score: number) => {
+    if (score >= 80) return "green";
+    if (score >= 60) return "orange";
+    return "red";
+  };
+
+  const getTextForScore = (score: number) => {
+    if (score >= 80) return "Excellent!";
+    if (score >= 60) return "Good job!";
+    return "Better luck next time!";
+  };
   return (
     <S.ResultsContainer>
       <h1>Results</h1>
+      <S.ScoreDisplay>
+        <S.ScoreText>
+          You answered {correctAnswers} out of {questions.length} questions
+          correctly!
+        </S.ScoreText>
+        <S.PercentageScore color={getColorForScore(percentageScore)}>
+          {percentageScore.toFixed(2)}%
+        </S.PercentageScore>
+        <S.ScoreText>{getTextForScore(percentageScore)}</S.ScoreText>
+      </S.ScoreDisplay>
       <S.ResultsTable>
         <thead>
           <tr>

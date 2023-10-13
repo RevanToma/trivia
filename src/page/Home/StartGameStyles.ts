@@ -51,11 +51,13 @@ export const SetupGameFields = styled.div`
     width: 28rem;
     height: 3.5rem;
     border-radius: 0.5rem;
-    border: none;
+    border: 1px solid #dcedc8;
     cursor: pointer;
     color: #1e1e1e;
     font-weight: 600;
     padding: 0rem 0.5rem;
+    background: #303841;
+    color: white;
   }
   span {
     color: #ffa500;
