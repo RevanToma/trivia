@@ -31,7 +31,7 @@ const Timer: React.FC<TimerProps> = ({ initialSeconds }) => {
       alert("Time is up! You will be redirected to the results page.");
       navigate("/results");
     }
-  }, [seconds, dispatch]);
+  }, [seconds, dispatch, navigate]);
 
   useEffect(() => {
     setSeconds(initialSeconds);
