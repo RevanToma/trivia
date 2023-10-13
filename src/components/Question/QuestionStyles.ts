@@ -13,7 +13,7 @@ export const QuestionContainer = styled(StartGameContainer)`
 
 export const QuestionContent = styled.div`
   display: flex;
-  width: 40rem;
+  width: 100%;
 
   gap: 3.5rem;
   justify-content: center;

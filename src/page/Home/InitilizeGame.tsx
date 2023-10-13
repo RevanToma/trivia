@@ -52,6 +52,7 @@ const StartGame = () => {
     setLoading(false);
     navigate("/game");
   };
+
   return (
     <S.StartGameContainer>
       <header>

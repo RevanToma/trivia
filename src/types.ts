@@ -29,6 +29,7 @@ export interface TriviaState {
   userAnswers: string[];
   sessionToken: string;
   gameStatus: "idle" | "ongoing" | "finished";
+  startTime: number | null;
 }
 
 export type TriviaCategory = {

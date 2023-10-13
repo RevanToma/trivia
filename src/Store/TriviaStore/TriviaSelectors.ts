@@ -19,3 +19,8 @@ export const selectGameStatus = (state: RootState) =>
 
 export const selectCurrentQuestion = (state: RootState) =>
   triviaSlice(state).questions[triviaSlice(state).currentQuestionIndex];
+
+export const isGameFinished = (state: RootState) =>
+  state.trivia.currentQuestionIndex === state.trivia.questions.length - 1;
+export const selectStartTime = (state: RootState) =>
+  triviaSlice(state).startTime;

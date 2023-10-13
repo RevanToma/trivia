@@ -2,26 +2,34 @@ import { FC, useState, useEffect } from "react";
 import { QuestionProps } from "../../types";
 import Button from "../common/Button/Button";
 import { useSelector } from "react-redux";
-import { selectQuestions } from "../../Store/TriviaStore/TriviaSelectors";
+import {
+  selectCurrentQuestionIndex,
+  selectQuestions,
+  selectStartTime,
+} from "../../Store/TriviaStore/TriviaSelectors";
 import * as S from "./QuestionStyles";
 import { useAppDispatch } from "../../hooks/useDispatch";
 import {
+  finishGame,
   nextQuestion,
+  resetTrivia,
   setUserAnswer,
 } from "../../Store/TriviaStore/TriviaSlice";
 import Timer from "../common/Timer/Timer";
-const Question: FC<QuestionProps> = ({
-  data,
-
-  onAnswerSelected,
-}) => {
+import { useNavigate } from "react-router-dom";
+const Question: FC<QuestionProps> = ({ data, onAnswerSelected }) => {
   const [shuffledOpt, setShuffledOpt] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+
   const dispatch = useAppDispatch();
+  const startTime = useSelector(selectStartTime);
+  const currentTime = Date.now();
 
   const totalQuestions = useSelector(selectQuestions).length;
   const currentQuestion = useSelector(selectQuestions).indexOf(data) + 1;
   const selectedCategory = data.category;
+  const currentQuestionIndex = useSelector(selectCurrentQuestionIndex);
+  const navigate = useNavigate();
 
   const handleAnswerClick = (answer: string) => {
     setSelectedAnswer(answer);
@@ -30,19 +38,34 @@ const Question: FC<QuestionProps> = ({
 
   const handleSubmit = () => {
     dispatch(setUserAnswer(selectedAnswer));
-    dispatch(nextQuestion());
+
+    const finished = currentQuestionIndex >= totalQuestions - 1;
+
+    if (finished) {
+      dispatch(finishGame());
+      navigate("/results");
+    } else {
+      dispatch(nextQuestion());
+    }
     setSelectedAnswer(null);
   };
+  const allowedTime = 31;
   useEffect(() => {
+    if (startTime && currentTime - startTime > allowedTime) {
+      navigate("/");
+      dispatch(resetTrivia());
+    }
     setShuffledOpt(
       [...data.incorrect_answers, data.correct_answer].sort(
         () => Math.random() - 0.5
       )
     );
   }, [data]);
+
   const handleTimeOut = () => {
     console.log("time out");
   };
+
   return (
     <S.QuestionContainer>
       <header>

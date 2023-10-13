@@ -1,4 +1,3 @@
-import { SessionApi } from "../../Api/Api";
 import { TriviaState } from "../../types";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
@@ -26,6 +25,7 @@ const initialState: TriviaState = {
   userAnswers: [],
   sessionToken: "",
   gameStatus: "idle",
+  startTime: null,
 };
 
 const triviaSlice = createSlice({
@@ -36,19 +36,21 @@ const triviaSlice = createSlice({
       state.questions = payload;
     },
     setUserAnswer: (state, { payload }) => {
-      state.userAnswers = payload;
+      state.userAnswers = [...state.userAnswers, payload];
     },
     nextQuestion: (state) => {
       state.currentQuestionIndex++;
+      state.startTime = Date.now();
     },
     setSessionToken: (state, { payload }: PayloadAction<string>) => {
       state.sessionToken = payload;
     },
     resetTrivia: (state) => {
-      state.questions = [];
       state.currentQuestionIndex = 0;
       state.userAnswers = [];
       state.gameStatus = "idle";
+      state.startTime = null;
+      state.sessionToken = "";
     },
     startGame: (state) => {
       state.gameStatus = "ongoing";
@@ -61,6 +63,7 @@ const triviaSlice = createSlice({
     builder.addCase(fetchTriviaQuestions.fulfilled, (state, { payload }) => {
       state.questions = payload;
       state.gameStatus = "ongoing";
+      state.startTime = Date.now();
     });
     builder.addCase(fetchSessionToken.fulfilled, (state, { payload }) => {
       state.sessionToken = payload;

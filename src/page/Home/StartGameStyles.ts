@@ -9,7 +9,7 @@ export const StartGameContainer = styled.div`
   margin: 1rem;
   border-radius: 1rem;
 
-  width: 45rem;
+  width: 50rem;
   min-height: 60rem;
   gap: 1rem;
   margin-top: 7rem;
