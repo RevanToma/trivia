@@ -1,7 +1,7 @@
 {
   "name": "trivia",
   "version": "0.1.0",
-  "homepage": "https://RevanToma.github.io/trivia",
+  "homepage": "https://RevanToma.github.io/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",

@@ -12,10 +12,10 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <BrowserRouter basename="/trivia">
+      <BrowserRouter>
         <Suspense fallback={<Spinner />}>
           <Routes>
-            <Route path="/" element={<InitilizeGame />} />
+            <Route index element={<InitilizeGame />} />
             <Route
               path="/game"
               element={<RouteGuard component={StartedGame} />}
