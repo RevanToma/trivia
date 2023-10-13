@@ -60,7 +60,7 @@ const Question: FC<QuestionProps> = ({ data, onAnswerSelected }) => {
         () => Math.random() - 0.5
       )
     );
-  }, [data]);
+  }, [data, startTime, currentTime, allowedTime, dispatch, navigate]);
 
   return (
     <S.QuestionContainer>

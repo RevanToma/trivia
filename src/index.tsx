@@ -1,8 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 
 import App from "./App";
-import { GlobalStyles } from "./Styles/GlobalStyles";
 import { Provider } from "react-redux";
 import store, { persistor } from "./Store/Store";
 import { PersistGate } from "redux-persist/integration/react";
