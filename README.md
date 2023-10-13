@@ -9,6 +9,8 @@ Welcome to my trivia App!
 - **Results**: Shows correct and incorrect answers after completion.
 - **Replayability**: Allows users to play again.
 - **Tech Stack**: Built with React, Redux, Styled Components, and TypeScript.
+- **Figma**: Was used to design the app.
+  ![App Design](./public/triviagame.png)
 
 ## Demo
 
