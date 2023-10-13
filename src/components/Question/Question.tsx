@@ -60,8 +60,7 @@ const Question: FC<QuestionProps> = ({ data, onAnswerSelected }) => {
         () => Math.random() - 0.5
       )
     );
-  }, [data]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <S.QuestionContainer>
@@ -72,7 +71,7 @@ const Question: FC<QuestionProps> = ({ data, onAnswerSelected }) => {
         </h2>
       </header>
       <S.QuestionContent>
-        <Timer initialSeconds={5} />
+        <Timer initialSeconds={allowedTime} />
         <h4>{data.question}</h4>
 
         <>
