@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { FC, useState, useEffect } from "react";
 import { QuestionProps } from "../../types";
 import Button from "../common/Button/Button";
