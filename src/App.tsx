@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import InitilizeGame from "./page/Home/InitilizeGame";
 import { GlobalStyles } from "./Styles/GlobalStyles";
 import { Suspense, lazy } from "react";
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <BrowserRouter basename="/trivia">
+      <BrowserRouter>
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path="/" element={<InitilizeGame />} />

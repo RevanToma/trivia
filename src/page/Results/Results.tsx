@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import {
   selectQuestions,
@@ -9,7 +8,7 @@ import Button from "../../components/common/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/useDispatch";
 import { resetTrivia } from "../../Store/TriviaStore/TriviaSlice";
-// import "./Results.css";
+
 const Results = () => {
   const userAnswers = useSelector(selectUserAnswers);
   const questions = useSelector(selectQuestions);
