@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <BrowserRouter>
+      <BrowserRouter basename="/trivia">
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path="/" element={<InitilizeGame />} />
