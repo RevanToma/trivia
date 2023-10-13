@@ -15,6 +15,7 @@ Welcome to my trivia App!
 ## Demo
 
 If you don't wish to set up the project locally, you can try out the deployed version on Netlify:
+PS: If you chose the Netlify version there is a small bugg at the moment, where the first time u enter the page u have to choose categories twice.
 [Trivia App Live Demo](https://iternship-trivia.netlify.app/)
 
 ## Getting Started
