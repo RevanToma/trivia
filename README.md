@@ -14,8 +14,8 @@ Welcome to my trivia App!
 
 ## Demo
 
-If you don't wish to set up the project locally, you can try out the deployed version on GitHub Pages:
-[Trivia App Live Demo](https://github.com/RevanToma/trivia)
+If you don't wish to set up the project locally, you can try out the deployed version on Netlify:
+[Trivia App Live Demo](https://iternship-trivia.netlify.app/)
 
 ## Getting Started
 
