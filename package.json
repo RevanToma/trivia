@@ -37,7 +37,7 @@
       "react-app",
       "react-app/jest"
     ],
-    "rulse": {
+    "rules": {
       "react-hooks/exhaustive-deps": "off"
     }
   },
