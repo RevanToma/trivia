@@ -18,11 +18,16 @@ const App = () => {
             <Route path="/" element={<InitilizeGame />} />
             <Route
               path="/game"
-              element={<RouteGuard component={StartedGame} />}
+              element={
+                <RouteGuard
+                  component={StartedGame}
+                  redirectIfGameStatus={true}
+                />
+              }
             />
             <Route
               path="/results"
-              element={<RouteGuard component={Results} redirectIfGameStatus />}
+              element={<RouteGuard component={Results} resultsRedirect />}
             />
             <Route path="*" element={<NotFound />} />
           </Routes>
