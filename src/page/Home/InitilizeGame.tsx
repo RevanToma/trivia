@@ -46,13 +46,14 @@ const StartGame = () => {
     getCategories();
   }, []);
 
+  const values = getValues();
+  const difficulty = values.difficulty;
+  const category = values.category;
+
   const onSubmit = async () => {
     setLoading(true);
-    dispatch(fetchSessionToken(SessionApi));
+    await dispatch(fetchSessionToken(SessionApi));
 
-    const values = getValues();
-    const difficulty = values.difficulty;
-    const category = values.category;
     const TriviaApiUrl = `${InitialTriviaApiUrl}&category=${category}&difficulty=${difficulty}&type=multiple&token=${sessionToken}`;
     await dispatch(fetchTriviaQuestions(TriviaApiUrl));
     setLoading(false);
