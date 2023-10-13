@@ -15,7 +15,7 @@ const App = () => {
       <BrowserRouter>
         <Suspense fallback={<Spinner />}>
           <Routes>
-            <Route index element={<InitilizeGame />} />
+            <Route path="/" element={<InitilizeGame />} />
             <Route
               path="/game"
               element={<RouteGuard component={StartedGame} />}
